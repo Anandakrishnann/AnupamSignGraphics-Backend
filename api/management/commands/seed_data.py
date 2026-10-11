@@ -1,3 +1,5 @@
+import os
+
 from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
 from api.models import SiteSettings, Location, Service, Blog
@@ -9,13 +11,11 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         User = get_user_model()
         if not User.objects.filter(username='admin').exists():
-            User.objects.create_superuser('admin', 'admin@anupam.local', 'anupam@vaikom')
-            self.stdout.write(self.style.SUCCESS('Created admin / anupam@vaikom'))
+            password = os.environ.get('ADMIN_PASSWORD', 'anupam@vaikom')
+            User.objects.create_superuser('admin', 'admin@anupam.local', password)
+            self.stdout.write(self.style.SUCCESS('Created admin user'))
         else:
-            user = User.objects.get(username='admin')
-            user.set_password('anupam@vaikom')
-            user.save()
-            self.stdout.write(self.style.SUCCESS('Updated admin password to anupam@vaikom'))
+            self.stdout.write('Admin user already exists')
 
         settings = SiteSettings.get_solo()
         settings.business_name = 'Anupam Signgraphics'

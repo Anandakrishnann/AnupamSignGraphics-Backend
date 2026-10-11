@@ -21,7 +21,7 @@ Django admin: `http://127.0.0.1:8000/django-admin/`
 
 **Build command**
 ```bash
-pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate && python manage.py seed_data
 ```
 
 **Start command** 
