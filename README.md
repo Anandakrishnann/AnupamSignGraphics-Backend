@@ -14,11 +14,6 @@ python manage.py seed_data
 python manage.py runserver
 ```
 
-## Admin
-
-- Username: `admin`
-- Password: `anupam@vaikom`
-
 API: `http://127.0.0.1:8000/api/`  
 Django admin: `http://127.0.0.1:8000/django-admin/`
 
@@ -29,7 +24,7 @@ Django admin: `http://127.0.0.1:8000/django-admin/`
 pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
 ```
 
-**Start command** (project module is `config`, not `CodeX`)
+**Start command** 
 ```bash
 gunicorn config.wsgi:application
 ```
