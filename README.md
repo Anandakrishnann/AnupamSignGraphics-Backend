@@ -21,3 +21,15 @@ python manage.py runserver
 
 API: `http://127.0.0.1:8000/api/`  
 Django admin: `http://127.0.0.1:8000/django-admin/`
+
+## Render
+
+**Build command**
+```bash
+pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+```
+
+**Start command** (project module is `config`, not `CodeX`)
+```bash
+gunicorn config.wsgi:application
+```
